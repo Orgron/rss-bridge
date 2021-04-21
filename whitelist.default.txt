@@ -20,3 +20,4 @@ VK.com
 Telegram Bridge
 TelegramBridge
 Telegram
+EconomistBridge
