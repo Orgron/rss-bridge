@@ -17,3 +17,6 @@ Vkontakte
 VK
 VKontakte
 VK.com
+Telegram Bridge
+TelegramBridge
+Telegram
