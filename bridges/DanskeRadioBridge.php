@@ -1,22 +1,22 @@
 <?php
 class EconomistBridge extends BridgeAbstract {
-	const NAME = 'The Economist: Latest Updates';
-	const URI = 'https://www.economist.com';
-	const DESCRIPTION = 'Fetches the latest updates from the Economist.';
-	const MAINTAINER = 'thefranke';
+	const NAME = 'DR: Indland';
+	const URI = 'https://www.dr.dk/nyheder/indland';
+	const DESCRIPTION = 'Fetches the latest updates from DR: Indland.';
+	const MAINTAINER = 'orgron';
 	const CACHE_TIMEOUT = 3600; // 1h
 
 	public function getIcon() {
-		return 'https://www.economist.com/sites/default/files/econfinal_favicon.ico';
+		return 'https://www.dr.dk/global/logos/dr.png';
 	}
 
 	public function collectData() {
-		$html = getSimpleHTMLDOM(self::URI . '/latest/')
-			or returnServerError('Could not fetch latest updates form The Economist.');
+		$html = getSimpleHTMLDOM(self::URI . '')
+			or returnServerError('Could not fetch latest updates from DR: Indland.');
 
 		foreach($html->find('div.teaser') as $element) {
 
-			$a = $element->find('a.headline-link', 0);
+			$a = $element->find('a.dre-teaser-title', 0);
 			$href = $a->href;
 
 			if (substr($href, 0, 4) != 'http')
@@ -35,7 +35,7 @@ class EconomistBridge extends BridgeAbstract {
 			if ($author)
 				$author = substr($author->innertext, 3, strlen($author));
 			else
-				$author = 'The Economist';
+				$author = 'DR';
 
 			// Remove newsletter subscription box
 			$newsletter = $content->find('div[class="newsletter-form__message"]', 0);
