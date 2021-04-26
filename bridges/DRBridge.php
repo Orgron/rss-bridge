@@ -5,11 +5,13 @@ class DRBridge extends BridgeAbstract {
 	const DESCRIPTION = 'Fetches the latest updates from DR: Indland.';
 	const MAINTAINER = 'orgron';
 	const CACHE_TIMEOUT = 3600; // 1h
-
+	
+	/*
 	public function getIcon() {
 		return 'https://www.dr.dk/global/logos/dr.png';
 	}
-
+	*/
+	
 	public function collectData() {
 		$html = getSimpleHTMLDOM(self::URI)
 			or returnServerError('Could not fetch latest updates from DR: Indland.');
