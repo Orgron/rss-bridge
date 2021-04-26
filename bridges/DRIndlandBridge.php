@@ -1,5 +1,5 @@
 <?php
-class EconomistBridge extends BridgeAbstract {
+class DRInlandBridge extends BridgeAbstract {
 	const NAME = 'DR: Indland';
 	const URI = 'https://www.dr.dk/nyheder/indland';
 	const DESCRIPTION = 'Fetches the latest updates from DR: Indland.';
