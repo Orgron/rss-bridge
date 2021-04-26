@@ -11,7 +11,7 @@ class EconomistBridge extends BridgeAbstract {
 	}
 
 	public function collectData() {
-		$html = getSimpleHTMLDOM(self::URI . '')
+		$html = getSimpleHTMLDOM(self::URI)
 			or returnServerError('Could not fetch latest updates from DR: Indland.');
 
 		foreach($html->find('div.teaser') as $element) {
