@@ -23,4 +23,3 @@ Telegram
 EconomistBridge
 ElsevierBridge
 NYTBridge
-DRIndlandBridge
