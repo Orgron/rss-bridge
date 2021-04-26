@@ -14,7 +14,7 @@ class EconomistBridge extends BridgeAbstract {
 		$html = getSimpleHTMLDOM(self::URI)
 			or returnServerError('Could not fetch latest updates from DR: Indland.');
 
-		foreach($html->find('div.teaser') as $element) {
+		/*foreach($html->find('div.teaser') as $element) {
 
 			$a = $element->find('a.dre-teaser-title', 0);
 			$href = $a->href;
@@ -65,6 +65,7 @@ class EconomistBridge extends BridgeAbstract {
 
 			if (count($this->items) >= 10)
 				break;
+		*/
 		}
 	}
 }
