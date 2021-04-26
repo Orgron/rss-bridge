@@ -15,9 +15,9 @@ class DRBridge extends BridgeAbstract {
 	public function collectData() {
 		$html = getSimpleHTMLDOM(self::URI . '')
 			or returnServerError('Could not fetch latest updates from DR: Indland.');
-		/*
+		
 		foreach($html->find('div.dre-teaser-content') as $element) {
-
+			
 			$a = $element->find('a.dre-teaser-title', 0);
 			$href = $a->href;
 
@@ -27,6 +27,7 @@ class DRBridge extends BridgeAbstract {
 			$full = getSimpleHTMLDOMCached($href);
 			$article = $full->find('dre-standard-article', 0);
 			$header = $article->find('h1[itemprop="headline"]', 0);
+			/*
 			$headerimg = $article->find('picture[class="dre-picture__picture"]', 0)->find('img', 0);
 			$author = $article->find('span[itemprop="name"]', 0);
 			$time = $article->find('time', 0);
@@ -54,10 +55,11 @@ class DRBridge extends BridgeAbstract {
 			$nextprev = $content->find('div[class="blog-post__next-previous-wrapper"]', 0);
 			if ($nextprev)
 				$nextprev->outertext = '';
-			
+			*/
 			$item = array();
 			$item['title'] = $header->innertext;
 			
+			/*
 			$item['uri'] = $href;
 			$item['timestamp'] = strtotime($time->datetime);
 			$item['author'] = $author;
@@ -65,14 +67,14 @@ class DRBridge extends BridgeAbstract {
 
 			$item['content'] = '<img style="max-width: 100%" src="'
 				. $headerimg->src . '">' . $content->innertext;
-			
+			*/
 			$this->items[] = $item;
 
-			if (count($this->items) >= 10)
-				break;
+			//if (count($this->items) >= 10)
+			//	break;
 			
 		}
-	*/
+	
 		$item = array(); // Create a new item
 
 		$item['title'] = 'Hello World!';
