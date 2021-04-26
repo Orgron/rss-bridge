@@ -65,7 +65,8 @@ class DRInlandBridge extends BridgeAbstract {
 
 			if (count($this->items) >= 10)
 				break;
-		*/
+		
 		}
+		*/
 	}
 }
