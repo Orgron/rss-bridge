@@ -23,3 +23,5 @@ Telegram
 EconomistBridge
 ElsevierBridge
 NYTBridge
+DanskeRadioBridge
+DR: Indland
