@@ -1,7 +1,7 @@
 <?php
 class DRBridge extends BridgeAbstract {
 	const NAME = 'DR: Indland';
-	const URI = 'https://www.dr.dk/nyheder/indland';
+	const URI = 'https://www.dr.dk';
 	const DESCRIPTION = 'Fetches the latest updates from DR: Indland.';
 	const MAINTAINER = 'orgron';
 	const CACHE_TIMEOUT = 3600; // 1h
@@ -13,7 +13,7 @@ class DRBridge extends BridgeAbstract {
 	*/
 	
 	public function collectData() {
-		$html = getSimpleHTMLDOM(self::URI . '')
+		$html = getSimpleHTMLDOM(self::URI . '/nyheder/indland')
 			or returnServerError('Could not fetch latest updates from DR: Indland.');
 		
 		foreach($html->find('div.dre-teaser-content') as $element) {
