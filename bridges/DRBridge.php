@@ -16,7 +16,7 @@ class DRBridge extends BridgeAbstract {
 		$html = getSimpleHTMLDOM(self::URI)
 			or returnServerError('Could not fetch latest updates from DR: Indland.');
 
-		foreach($html->find('div.teaser') as $element) {
+		foreach($html->find('div.dre-teaser-content') as $element) {
 
 			$a = $element->find('a.dre-teaser-title', 0);
 			$href = $a->href;
@@ -25,20 +25,22 @@ class DRBridge extends BridgeAbstract {
 				$href = self::URI . $a->href;
 
 			$full = getSimpleHTMLDOMCached($href);
-			$article = $full->find('article', 0);
-			$header = $article->find('span[class="dre-title-text dre-title-text--prefixed"]', 0);
-			$headerimg = $article->find('div[class="dre-article-hero-top__image"]', 0)->find('img', 0);
+			$article = $full->find('dre-standard-article', 0);
+			$header = $article->find('h1[itemprop="headline"]', 0);
+			$headerimg = $article->find('picture[class="dre-picture__picture"]', 0)->find('img', 0);
 			$author = $article->find('span[itemprop="name"]', 0);
 			$time = $article->find('time', 0);
-			$content = $article->find('div[itemprop="text"]', 0);
-			$section = array( $article->find('strong[itemprop="articleSection"]', 0)->plaintext );
+			$content = $article->find('div[class="dre-container__content"]', 0);
+			
+			
+			$section = array( $article->find('div[class="dre-article-title__section-label"]', 0)->plaintext );
 
 			// Author
 			if ($author)
 				$author = substr($author->innertext, 3, strlen($author));
 			else
 				$author = 'DR';
-
+			/*
 			// Remove newsletter subscription box
 			$newsletter = $content->find('div[class="newsletter-form__message"]', 0);
 			if ($newsletter)
@@ -47,12 +49,12 @@ class DRBridge extends BridgeAbstract {
 			$newsletterForm = $content->find('form', 0);
 			if ($newsletterForm)
 				$newsletterForm->outertext = '';
-
+			
 			// Remove next and previous article URLs at the bottom
 			$nextprev = $content->find('div[class="blog-post__next-previous-wrapper"]', 0);
 			if ($nextprev)
 				$nextprev->outertext = '';
-
+			*/
 			$item = array();
 			$item['title'] = $header->innertext;
 			$item['uri'] = $href;
@@ -67,7 +69,7 @@ class DRBridge extends BridgeAbstract {
 
 			if (count($this->items) >= 10)
 				break;
-		
+			
 		}
 		
 	}
