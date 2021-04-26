@@ -73,7 +73,11 @@ class DRBridge extends BridgeAbstract {
 			
 		}
 	*/
-		
+		$item = array(); // Create a new item
+
+		$item['title'] = 'Hello World!';
+
+		$this->items[] = $item; // Add item to the list
 	}
 }
 
