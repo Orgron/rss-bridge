@@ -13,7 +13,7 @@ class DRBridge extends BridgeAbstract {
 	*/
 	
 	public function collectData() {
-		$html = getSimpleHTMLDOM(self::URI)
+		$html = getSimpleHTMLDOM(self::URI . '')
 			or returnServerError('Could not fetch latest updates from DR: Indland.');
 
 		foreach($html->find('div.dre-teaser-content') as $element) {
