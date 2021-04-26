@@ -24,9 +24,9 @@ class EconomistBridge extends BridgeAbstract {
 
 			$full = getSimpleHTMLDOMCached($href);
 			$article = $full->find('article', 0);
-			$header = $article->find('span[itemprop="headline"]', 0);
-			$headerimg = $article->find('div[itemprop="image"]', 0)->find('img', 0);
-			$author = $article->find('p[itemprop="byline"]', 0);
+			$header = $article->find('span[class="dre-title-text dre-title-text--prefixed"]', 0);
+			$headerimg = $article->find('div[class="dre-article-hero-top__image"]', 0)->find('img', 0);
+			$author = $article->find('span[itemprop="name"]', 0);
 			$time = $article->find('time', 0);
 			$content = $article->find('div[itemprop="text"]', 0);
 			$section = array( $article->find('strong[itemprop="articleSection"]', 0)->plaintext );
