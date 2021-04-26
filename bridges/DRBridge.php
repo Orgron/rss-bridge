@@ -57,6 +57,7 @@ class DRBridge extends BridgeAbstract {
 			*/
 			$item = array();
 			$item['title'] = $header->innertext;
+			/*
 			$item['uri'] = $href;
 			$item['timestamp'] = strtotime($time->datetime);
 			$item['author'] = $author;
@@ -64,7 +65,7 @@ class DRBridge extends BridgeAbstract {
 
 			$item['content'] = '<img style="max-width: 100%" src="'
 				. $headerimg->src . '">' . $content->innertext;
-
+			*/
 			$this->items[] = $item;
 
 			if (count($this->items) >= 10)
