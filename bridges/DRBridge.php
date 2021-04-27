@@ -18,18 +18,25 @@ class DRBridge extends BridgeAbstract {
 		
 		foreach($html->find('div.dre-teaser-content') as $element) {
 			
-			/*
+			
 			$a = $element->find('a.dre-teaser-title', 0);
+			
+			
 			$href = $a->href;
+			$item = array(); // Create a new item
 
+			$item['title'] = self::'Hello World!'.$href;
+
+			$this->items[] = $item; // Add item to the list
+			/*
 			if (substr($href, 0, 4) != 'http')
 				$href = self::URI . $a->href;
 
 			$full = getSimpleHTMLDOMCached($href);
 			$article = $full->find('dre-standard-article', 0);
 			$header = $article->find('h1[itemprop="headline"]', 0);
-			
 			*/
+			
 			/*
 			$headerimg = $article->find('picture[class="dre-picture__picture"]', 0)->find('img', 0);
 			$author = $article->find('span[itemprop="name"]', 0);
@@ -79,12 +86,13 @@ class DRBridge extends BridgeAbstract {
 			//	break;
 			
 		}
-	
+		/*
 		$item = array(); // Create a new item
 
-		$item['title'] = $html;
+		$item['title'] = 'Hello World!';
 
 		$this->items[] = $item; // Add item to the list
+		*/
 	}
 }
 
