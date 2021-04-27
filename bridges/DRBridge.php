@@ -26,8 +26,8 @@ class DRBridge extends BridgeAbstract {
 			$article = $full->find('article', 0);
 			//$rofl = $full->find('p[class="dre-article-body-paragraph"]', 0);
 			$header = $article->find('h1[itemprop="headline"]', 0);
-			$articlebody = $article->find('div[class="dre-article-body"]', 0);
-			$content = $articlebody->find('div[class="dre-container__content dre-container__content--small"]');
+			$content = $article->find('div[class="dre-article-body"]', 0);
+			//$content = $articlebody->find('div[class="dre-container__content dre-container__content--small"]');
 			
 			// Remove newsletter subscription box
 			$newsletter = $content->find('div[class="hydra-marketing-banner"]', 0);
@@ -91,7 +91,7 @@ class DRBridge extends BridgeAbstract {
 			*/
 			//$this->items[] = $item;
 
-			if (count($this->items) >= 1)
+			if (count($this->items) >= 10)
 				break;
 			
 		}
