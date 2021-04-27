@@ -29,12 +29,13 @@ class DRBridge extends BridgeAbstract {
 			
 
 			$full = getSimpleHTMLDOMCached($href);
-			$article = $full->find('dre-article', 0);
+			//$article = $full->find('dre-article', 0);
+			$rofl = $full->find('dre-article-body-paragraph', 0);
 			//$header = $article->find('h1[itemprop="headline"]', 0);
 			
 			$item = array(); // Create a new item
 
-			$item['content'] = $article;
+			$item['content'] = $rofl;
 
 			$this->items[] = $item; // Add item to the list
 			
