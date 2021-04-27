@@ -63,7 +63,7 @@ class EconomistBridge extends BridgeAbstract {
 
 			$this->items[] = $item;
 
-			if (count($this->items) >= 10)
+			if (count($this->items) >= 2)
 				break;
 		}
 	}
