@@ -30,15 +30,17 @@ class DRBridge extends BridgeAbstract {
 			//$content = $articlebody->find('div[class="dre-container__content dre-container__content--small"]');
 			
 			// Remove newsletter subscription box
+			/*
 			$newsletter = $content->find('div[class="hydra-marketing-banner"]', 0);
 			if ($newsletter)
 				$newsletter->outertext = '';
-			
+			*/
 			// Remove the oversized quotation mark
+			/*
 			$quote = $content->find('div[class="dre-block-quote__icon"]', 0);
 			if ($quote)
 				$quote->outertext = '';
-			
+			*/
 			
 			$item = array(); // Create a new item
 			
