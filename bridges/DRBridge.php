@@ -21,7 +21,8 @@ class DRBridge extends BridgeAbstract {
 			
 			$href = self::URI . $a->href;
 
-			$full = getSimpleHTMLDOMCached($href);
+			$full = getSimpleHTMLDOM($href);
+			//$full = getSimpleHTMLDOMCached($href);
 			$article = $full->find('dre-article', 0);
 			//$rofl = $full->find('p[class="dre-article-body-paragraph"]', 0);
 			//$header = $article->find('h1[itemprop="headline"]', 0);
