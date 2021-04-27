@@ -35,7 +35,7 @@ class DRBridge extends BridgeAbstract {
 			$content = $article->find('div[class="dre-container__content"]', 0);
 			$item = array(); // Create a new item
 
-			$item['content'] = $content;
+			$item['content'] = $content->innnertext;
 
 			$this->items[] = $item; // Add item to the list
 			
