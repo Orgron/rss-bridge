@@ -18,16 +18,18 @@ class DRBridge extends BridgeAbstract {
 		
 		foreach($html->find('div.dre-teaser-content') as $element) {
 			
-			
-			$a = $element->find('a.dre-teaser-title', 0);
-			
-			
-			$href = $a->href;
 			$item = array(); // Create a new item
 
-			$item['content'] = self::'Hello World!'.$href;
+			$item['content'] = $element;
 
 			$this->items[] = $item; // Add item to the list
+			
+			
+			//$a = $element->find('a.dre-teaser-title', 0);
+			
+			
+			//$href = $a->href;
+			
 			/*
 			if (substr($href, 0, 4) != 'http')
 				$href = self::URI . $a->href;
