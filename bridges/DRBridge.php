@@ -27,6 +27,14 @@ class DRBridge extends BridgeAbstract {
 			//$rofl = $full->find('p[class="dre-article-body-paragraph"]', 0);
 			$header = $article->find('h1[itemprop="headline"]', 0);
 			$content = $article->find('div[class="dre-article-body"]', 0);
+			
+			
+			// Remove newsletter subscription box
+			$newsletter = $content->find('div[class="hydra-marketing-banner"]', 0);
+			if ($newsletter)
+				$newsletter->outertext = '';
+			
+			
 			$item = array(); // Create a new item
 			
 			
@@ -51,10 +59,7 @@ class DRBridge extends BridgeAbstract {
 			else
 				$author = 'DR';
 			
-			// Remove newsletter subscription box
-			$newsletter = $content->find('div[class="newsletter-form__message"]', 0);
-			if ($newsletter)
-				$newsletter->outertext = '';
+			
 
 			$newsletterForm = $content->find('form', 0);
 			if ($newsletterForm)
