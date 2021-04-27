@@ -13,7 +13,7 @@ class DRBridge extends BridgeAbstract {
 	*/
 	
 	public function collectData() {
-		$html = getSimpleHTMLDOM(self::URI . '/nyheder/indland')
+		$html = getSimpleHTMLDOM(self::URI . '/nyheder/indland/')
 			or returnServerError('Could not fetch latest updates from DR: Indland.');
 		
 		foreach($html->find('div.dre-teaser-content') as $element) {
@@ -25,7 +25,7 @@ class DRBridge extends BridgeAbstract {
 			$href = $a->href;
 			$item = array(); // Create a new item
 
-			$item['title'] = self::'Hello World!'.$href;
+			$item['content'] = self::'Hello World!'.$href;
 
 			$this->items[] = $item; // Add item to the list
 			/*
