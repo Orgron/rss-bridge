@@ -25,17 +25,18 @@ class DRBridge extends BridgeAbstract {
 			
 			$href = self::URI . $a->href;
 			
-			$item = array(); // Create a new item
-
-			$item['content'] = $href;
-
-			$this->items[] = $item; // Add item to the list
-			/*
+			
+			
 
 			$full = getSimpleHTMLDOMCached($href);
 			$article = $full->find('dre-standard-article', 0);
 			$header = $article->find('h1[itemprop="headline"]', 0);
-			*/
+			
+			$item = array(); // Create a new item
+
+			$item['content'] = $article;
+
+			$this->items[] = $item; // Add item to the list
 			
 			/*
 			$headerimg = $article->find('picture[class="dre-picture__picture"]', 0)->find('img', 0);
