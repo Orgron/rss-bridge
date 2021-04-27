@@ -17,16 +17,9 @@ class DRBridge extends BridgeAbstract {
 			or returnServerError('Could not fetch latest updates from DR: Indland.');
 		
 		foreach($html->find('div.dre-teaser-content') as $element) {
-			
-			
-			
-			
 			$a = $element->find('a.dre-teaser-title', 0);
 			
 			$href = self::URI . $a->href;
-			
-			
-			
 
 			$full = getSimpleHTMLDOMCached($href);
 			//$article = $full->find('dre-article', 0);
@@ -84,7 +77,7 @@ class DRBridge extends BridgeAbstract {
 			*/
 			//$this->items[] = $item;
 
-			if (count($this->items) >= 10)
+			if (count($this->items) >= 2)
 				break;
 			
 		}
