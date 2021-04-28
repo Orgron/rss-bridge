@@ -36,6 +36,10 @@ class DRBridge extends BridgeAbstract {
 				$newsletter->outertext = '';
 			*/
 			// Remove the oversized quotation mark
+			foreach($content->find('div[class="dre-block-quote__icon"]') as $quote) {
+				if ($quote) 	$quote->outertext = '';
+			}
+			
 			/*
 			$quote = $content->find('div[class="dre-block-quote__icon"]', 0);
 			if ($quote)
