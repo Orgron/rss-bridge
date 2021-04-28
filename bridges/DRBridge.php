@@ -6,12 +6,6 @@ class DRBridge extends BridgeAbstract {
 	const MAINTAINER = 'orgron';
 	const CACHE_TIMEOUT = 3600; // 1h
 	
-	/*
-	public function getIcon() {
-		return 'https://www.dr.dk/global/logos/dr.png';
-	}
-	*/
-	
 	public function collectData() {
 		$html = getSimpleHTMLDOM(self::URI . '/nyheder/indland/')
 			or returnServerError('Could not fetch latest updates from DR: Indland.');
@@ -20,21 +14,11 @@ class DRBridge extends BridgeAbstract {
 			$a = $element->find('a.dre-teaser-title', 0);
 			
 			$href = self::URI . $a->href;
-
-			//$full = getSimpleHTMLDOM($href);
 			$full = getSimpleHTMLDOMCached($href);
 			$article = $full->find('article', 0);
-			//$rofl = $full->find('p[class="dre-article-body-paragraph"]', 0);
 			$header = $article->find('h1[itemprop="headline"]', 0);
 			$content = $article->find('div[class="dre-article-body"]', 0);
-			//$content = $articlebody->find('div[class="dre-container__content dre-container__content--small"]');
-			
-			// Remove newsletter subscription box
-			/*
-			$newsletter = $content->find('div[class="hydra-marketing-banner"]', 0);
-			if ($newsletter)
-				$newsletter->outertext = '';
-			*/
+
 			// Remove the oversized quotation marks
 			foreach($content->find('div[class="dre-block-quote__icon"]') as $quote) {
 				if ($quote)	$quote->outertext = '';
@@ -45,23 +29,20 @@ class DRBridge extends BridgeAbstract {
 				if ($placeholder)	$placeholder->outertext = '';
 			}
 			
-			/*
-			$quote = $content->find('div[class="dre-block-quote__icon"]', 0);
-			if ($quote)
-				$quote->outertext = '';
-			*/
+			$headerimg = $article->find('div[class="dre-picture"]', 0)->find('img', 0);
 			
 			$item = array(); // Create a new item
 			
 			
 			$item['title'] = $header->innertext;
-			$item['content'] = $content->innertext;
+			$item['content'] = '<img style="max-width: 100%" src="'
+				. $headerimg->src . '">' . $content->innertext;
 			$item['uri'] = $href;
 			
 			$this->items[] = $item; // Add item to the list
 			
 			/*
-			$headerimg = $article->find('picture[class="dre-picture__picture"]', 0)->find('img', 0);
+			
 			$author = $article->find('span[itemprop="name"]', 0);
 			$time = $article->find('time', 0);
 			
@@ -74,12 +55,6 @@ class DRBridge extends BridgeAbstract {
 				$author = substr($author->innertext, 3, strlen($author));
 			else
 				$author = 'DR';
-			
-			
-
-			$newsletterForm = $content->find('form', 0);
-			if ($newsletterForm)
-				$newsletterForm->outertext = '';
 			
 			// Remove next and previous article URLs at the bottom
 			$nextprev = $content->find('div[class="blog-post__next-previous-wrapper"]', 0);
@@ -97,8 +72,7 @@ class DRBridge extends BridgeAbstract {
 			$item['author'] = $author;
 			$item['categories'] = $section;
 
-			$item['content'] = '<img style="max-width: 100%" src="'
-				. $headerimg->src . '">' . $content->innertext;
+			
 			*/
 			//$this->items[] = $item;
 
