@@ -30,6 +30,7 @@ class DRBridge extends BridgeAbstract {
 			}
 			
 			$headerimg = $article->find('div[class="dre-picture"]', 0)->find('img', 0);
+			$author = $article->find('div[class="dre-byline__authors"]', 0);
 			
 			$item = array(); // Create a new item
 			
@@ -38,12 +39,12 @@ class DRBridge extends BridgeAbstract {
 			$item['content'] = '<img style="max-width: 100%" src="'
 				. $headerimg->src . '">' . $content->innertext;
 			$item['uri'] = $href;
-			
+			$item['author'] = $author->innertext;
 			$this->items[] = $item; // Add item to the list
 			
 			/*
 			
-			$author = $article->find('span[itemprop="name"]', 0);
+			
 			$time = $article->find('time', 0);
 			
 			
