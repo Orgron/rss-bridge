@@ -30,9 +30,12 @@ class DRBridge extends BridgeAbstract {
 			}
 			
 			// Remove other pictures
+			/*
 			foreach($content->find('figure[class="dre-article-body-figure dre-article-body-figure--medium dre-article-body-figure--spacing"]') as $other) {
 				if ($other)	$other->outertext = '';
 			}
+			*/
+			
 			$headerimg = $article->find('div[class="dre-picture"]', 0)->find('img', 0);
 			$author = $article->find('div[class="dre-byline__authors"]', 0);
 			
