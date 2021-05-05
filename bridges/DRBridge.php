@@ -12,7 +12,7 @@ class DRBridge extends BridgeAbstract {
 		
 		foreach($html->find('div.dre-teaser-content') as $element) {
 			$a = $element->find('a.dre-teaser-title', 0);
-			
+			/*
 			$href = self::URI . $a->href;
 			$full = getSimpleHTMLDOMCached($href);
 			$article = $full->find('article', 0);
@@ -29,60 +29,20 @@ class DRBridge extends BridgeAbstract {
 				if ($placeholder)	$placeholder->outertext = '';
 			}
 			
-			// Remove other pictures
-			/*
-			foreach($content->find('figure[class="dre-article-body-figure dre-article-body-figure--medium dre-article-body-figure--spacing"]') as $other) {
-				if ($other)	$other->outertext = '';
-			}
-			*/
-			
 			$headerimg = $article->find('div[class="dre-picture"]', 0)->find('img', 0);
 			$author = $article->find('div[class="dre-byline__authors"]', 0);
-			
+			*/
 			$item = array(); // Create a new item
 			
-			
+			/*
 			$item['title'] = $header->innertext;
 			$item['content'] = '<img style="max-width: 100%" src="'
 				. $headerimg->src . '">' . $content->innertext;
 			$item['uri'] = $href;
 			$item['author'] = $author->innertext;
+			*/
+			$item['content'] = $a;
 			$this->items[] = $item; // Add item to the list
-			
-			/*
-			
-			
-			$time = $article->find('time', 0);
-			
-			
-			
-			$section = array( $article->find('div[class="dre-article-title__section-label"]', 0)->plaintext );
-
-			// Author
-			if ($author)
-				$author = substr($author->innertext, 3, strlen($author));
-			else
-				$author = 'DR';
-			
-			// Remove next and previous article URLs at the bottom
-			$nextprev = $content->find('div[class="blog-post__next-previous-wrapper"]', 0);
-			if ($nextprev)
-				$nextprev->outertext = '';
-			*/
-			
-			/*
-			$item = array();
-			$item['title'] = $header->innertext;
-			*/
-			/*
-			$item['uri'] = $href;
-			$item['timestamp'] = strtotime($time->datetime);
-			$item['author'] = $author;
-			$item['categories'] = $section;
-
-			
-			*/
-			//$this->items[] = $item;
 
 			if (count($this->items) >= 10)
 				break;
