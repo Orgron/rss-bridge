@@ -18,7 +18,8 @@ class DRBridge extends BridgeAbstract {
 			$article = $full->find('article', 0);
 			$header = $article->find('h1[itemprop="headline"]', 0);
 			$content = $article->find('div[class="dre-article-body"]', 0);
-
+			
+			/*
 			// Remove the oversized quotation marks
 			foreach($content->find('div[class="dre-block-quote__icon"]') as $quote) {
 				if ($quote)	$quote->outertext = '';
@@ -28,7 +29,7 @@ class DRBridge extends BridgeAbstract {
 			foreach($content->find('div[class="dre-placeholder"]') as $placeholder) {
 				if ($placeholder)	$placeholder->outertext = '';
 			}
-			
+			*/
 			$headerimg = $article->find('div[class="dre-picture"]', 0)->find('img', 0);
 			$author = $article->find('div[class="dre-byline__authors"]', 0);
 			
