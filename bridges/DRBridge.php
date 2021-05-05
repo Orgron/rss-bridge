@@ -12,7 +12,7 @@ class DRBridge extends BridgeAbstract {
 		
 		foreach($html->find('div.dre-teaser-content') as $element) {
 			$a = $element->find('a.dre-teaser-title', 0);
-			/*
+			
 			$href = self::URI . $a->href;
 			$full = getSimpleHTMLDOMCached($href);
 			$article = $full->find('article', 0);
@@ -31,17 +31,17 @@ class DRBridge extends BridgeAbstract {
 			
 			$headerimg = $article->find('div[class="dre-picture"]', 0)->find('img', 0);
 			$author = $article->find('div[class="dre-byline__authors"]', 0);
-			*/
+			
 			$item = array(); // Create a new item
 			
-			/*
+		
 			$item['title'] = $header->innertext;
 			$item['content'] = '<img style="max-width: 100%" src="'
 				. $headerimg->src . '">' . $content->innertext;
 			$item['uri'] = $href;
 			$item['author'] = $author->innertext;
-			*/
-			$item['content'] = $a;
+			
+
 			$this->items[] = $item; // Add item to the list
 
 			if (count($this->items) >= 10)
